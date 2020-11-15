@@ -34,7 +34,7 @@ body {
     position: absolute;
     /* margin-left: 53%; */
     margin-left: 4%;
-    margin-top: 15vh;
+    margin-top: 10vh;
     /* width: 100%; */
     float: right;
 }
@@ -57,7 +57,7 @@ body {
     text-align: center;
     /* background: #333; */
     /* color: #000; */
-    margin: 0 5vh;
+    margin: 0 4vh;
     font-size: 5vh;
     font-weight: 500;
     
