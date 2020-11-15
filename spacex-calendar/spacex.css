@@ -41,7 +41,7 @@ body {
 
 .countdown {
     display: flex;
-    margin-top: 50px;
+    margin-top: 35px;
     /* margin-left: -100px; */
     /* left: 10; */
     /* background: rgba(0,0,0,0.25); */
@@ -58,7 +58,7 @@ body {
     /* background: #333; */
     /* color: #000; */
     margin: 0 4vh;
-    font-size: 5vh;
+    font-size: 3em;
     font-weight: 500;
     
 }
