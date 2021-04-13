@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+#hero {
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  text-align: left;
+  background-color: #121d35;
+  overflow: hidden;
+}
+
+#hero #phonesvg {
+  z-index: 0;
+  position: absolute;
+  overflow: hidden;
+  height: 200%;
+  width: 80%;
+  top: -50vh;
+  margin-left: 15vw;
+}
+
+#hero #content {
+  padding-left: 10vw;
+  margin-top: 40vh;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  z-index: 1;
+}
+
+#hero #content #text {
+  text-align: left;
+}
+
+#hero #content #text h1 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 5em;
+  word-wrap: normal;
+  color: #ffffff;
+}
+
+#hero #content #text h1 #r {
+  color: #ee4d4d;
+}
+
+#hero #content #text #subtitle {
+  font-weight: 300;
+  color: #cccccc;
+}
+
+#hero #content #scroll {
+  color: white;
+  padding-top: 5vh;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#hero #content #scroll i {
+  -webkit-animation: scrollArrow 3s ease 0s infinite normal none;
+          animation: scrollArrow 3s ease 0s infinite normal none;
+}
+
+#spacextra {
+  width: 100%;
+  height: 100vh;
+  background-color: #194461;
+}
+
+#spacextra #content {
+  background-color: #194461;
+  z-index: 1;
+  padding-top: 10vh;
+  padding-left: 10vw;
+}
+
+#spacextra #content #text {
+  color: #ffffff;
+}
+
+#spacextra #content #text #subline {
+  font-weight: 300;
+  font-size: 1.5em;
+}
+
+#spacextra #content #text #spacextra {
+  font-size: 4em;
+}
+
+#spacextra #content td {
+  display: inline-block;
+}
+
+#spacextra #content #phone {
+  height: 50vh;
+  position: absolute;
+  margin-top: -800px;
+}
+
+#spacextra #content #watch {
+  height: 40vh;
+  position: absolute;
+  margin-top: -660px;
+  margin-left: 50px;
+}
+
+#spacextra #content #appstore {
+  position: absolute;
+  margin-top: -900px;
+}
+
+@-webkit-keyframes scrollArrow {
+  0% {
+    padding-top: 0;
+    opacity: 1;
+  }
+  15% {
+    padding-top: 1vh;
+  }
+  20% {
+    padding-top: 0;
+    opacity: 1;
+  }
+  30% {
+    opacity: 1;
+  }
+  50% {
+    padding-top: 3vh;
+    opacity: 0;
+  }
+  90% {
+    padding-top: 0;
+  }
+  93% {
+    opacity: 0;
+  }
+}
+
+@keyframes scrollArrow {
+  0% {
+    padding-top: 0;
+    opacity: 1;
+  }
+  15% {
+    padding-top: 1vh;
+  }
+  20% {
+    padding-top: 0;
+    opacity: 1;
+  }
+  30% {
+    opacity: 1;
+  }
+  50% {
+    padding-top: 3vh;
+    opacity: 0;
+  }
+  90% {
+    padding-top: 0;
+  }
+  93% {
+    opacity: 0;
+  }
+}
+/*# sourceMappingURL=index.css.map */
