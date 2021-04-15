@@ -11,6 +11,7 @@
   max-height: 100vh;
   display: -ms-grid;
   display: grid;
+  position: absolute;
   text-align: left;
   background-color: #121d35;
   overflow: hidden;
@@ -74,14 +75,15 @@
 #spacextra {
   width: 100%;
   height: 100vh;
+  padding-top: 100vh;
   background-color: #194461;
 }
 
 #spacextra #content {
   background-color: #194461;
   z-index: 1;
-  padding-top: 10vh;
-  padding-left: 10vw;
+  padding-left: 7vw;
+  padding-top: 7vh;
 }
 
 #spacextra #content #text {
@@ -89,34 +91,86 @@
 }
 
 #spacextra #content #text #subline {
+  position: relative;
   font-weight: 300;
   font-size: 1.5em;
+  padding-bottom: 10px;
 }
 
-#spacextra #content #text #spacextra {
+#spacextra #content #text #spacextraTextDIV {
+  height: 70px;
+  padding-top: 7px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+#spacextra #content #text #spacextraTextDIV #spacextraText {
+  position: relative;
+  margin-left: 80px;
   font-size: 4em;
 }
 
-#spacextra #content td {
+#spacextra #content #text #spacextraTextDIV #spxtraLogo {
+  position: absolute;
+  height: 70px;
+  -webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ijc5My40IDYwNC41IDMwMCAzMDAiPjxwYXRoIGQ9Ik0xMDkzLjQgNjk4LjR2LTEwLjdjMC0zLS4xLTYtLjEtOS4xLS4yLTYuNi0uNi0xMy4yLTEuNy0xOS43LTEuMi02LjYtMy4xLTEyLjctNi4yLTE4LjctMy01LjktNi45LTExLjMtMTEuNi0xNi00LjctNC43LTEwLjEtOC42LTE2LTExLjYtNi0zLjEtMTIuMS01LTE4LjctNi4yLTYuNS0xLjItMTMuMS0xLjYtMTkuNy0xLjctMy0uMS02LS4xLTkuMS0uMUg4NzYuNmMtMyAwLTYgLjEtOS4xLjEtNi42LjItMTMuMi42LTE5LjcgMS43LTYuNiAxLjItMTIuNyAzLjEtMTguNyA2LjItNS45IDMtMTEuMyA2LjktMTYgMTEuNi00LjcgNC43LTguNiAxMC4xLTExLjYgMTYtMy4xIDYtNSAxMi4xLTYuMiAxOC43LTEuMiA2LjUtMS42IDEzLjEtMS43IDE5LjctLjEgMy0uMSA2LS4xIDkuMXYxMzMuN2MwIDMgLjEgNiAuMSA5LjEuMiA2LjYuNiAxMy4yIDEuNyAxOS43IDEuMiA2LjYgMy4xIDEyLjcgNi4yIDE4LjcgMyA1LjkgNi45IDExLjMgMTEuNiAxNiA0LjcgNC43IDEwLjEgOC42IDE2IDExLjYgNiAzLjEgMTIuMSA1IDE4LjcgNi4yIDYuNSAxLjIgMTMuMSAxLjYgMTkuNyAxLjcgMyAuMSA2IC4xIDkuMS4xaDEzMy43YzMgMCA2LS4xIDkuMS0uMSA2LjYtLjIgMTMuMi0uNiAxOS43LTEuNyA2LjYtMS4yIDEyLjctMy4xIDE4LjctNi4yIDUuOS0zIDExLjMtNi45IDE2LTExLjZzOC42LTEwLjEgMTEuNi0xNmMzLjEtNiA1LTEyLjEgNi4yLTE4LjcgMS4yLTYuNSAxLjYtMTMuMSAxLjctMTkuNy4xLTMgLjEtNiAuMS05LjF2LTEyM3oiLz48L3N2Zz4=");
+          mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ijc5My40IDYwNC41IDMwMCAzMDAiPjxwYXRoIGQ9Ik0xMDkzLjQgNjk4LjR2LTEwLjdjMC0zLS4xLTYtLjEtOS4xLS4yLTYuNi0uNi0xMy4yLTEuNy0xOS43LTEuMi02LjYtMy4xLTEyLjctNi4yLTE4LjctMy01LjktNi45LTExLjMtMTEuNi0xNi00LjctNC43LTEwLjEtOC42LTE2LTExLjYtNi0zLjEtMTIuMS01LTE4LjctNi4yLTYuNS0xLjItMTMuMS0xLjYtMTkuNy0xLjctMy0uMS02LS4xLTkuMS0uMUg4NzYuNmMtMyAwLTYgLjEtOS4xLjEtNi42LjItMTMuMi42LTE5LjcgMS43LTYuNiAxLjItMTIuNyAzLjEtMTguNyA2LjItNS45IDMtMTEuMyA2LjktMTYgMTEuNi00LjcgNC43LTguNiAxMC4xLTExLjYgMTYtMy4xIDYtNSAxMi4xLTYuMiAxOC43LTEuMiA2LjUtMS42IDEzLjEtMS43IDE5LjctLjEgMy0uMSA2LS4xIDkuMXYxMzMuN2MwIDMgLjEgNiAuMSA5LjEuMiA2LjYuNiAxMy4yIDEuNyAxOS43IDEuMiA2LjYgMy4xIDEyLjcgNi4yIDE4LjcgMyA1LjkgNi45IDExLjMgMTEuNiAxNiA0LjcgNC43IDEwLjEgOC42IDE2IDExLjYgNiAzLjEgMTIuMSA1IDE4LjcgNi4yIDYuNSAxLjIgMTMuMSAxLjYgMTkuNyAxLjcgMyAuMSA2IC4xIDkuMS4xaDEzMy43YzMgMCA2LS4xIDkuMS0uMSA2LjYtLjIgMTMuMi0uNiAxOS43LTEuNyA2LjYtMS4yIDEyLjctMy4xIDE4LjctNi4yIDUuOS0zIDExLjMtNi45IDE2LTExLjZzOC42LTEwLjEgMTEuNi0xNmMzLjEtNiA1LTEyLjEgNi4yLTE4LjcgMS4yLTYuNSAxLjYtMTMuMSAxLjctMTkuNy4xLTMgLjEtNiAuMS05LjF2LTEyM3oiLz48L3N2Zz4=");
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+          mask-size: 100% 100%;
+}
+
+#spacextra #content #text #appstore {
+  position: absolute;
+  margin-top: 18px;
+}
+
+#spacextra #content #spacextraTable {
+  padding-top: 100px;
+}
+
+#spacextra #content #spacextraTable .spacextraInfo {
   display: inline-block;
+  height: auto;
 }
 
-#spacextra #content #phone {
+#spacextra #content #spacextraTable #appImgSPX {
+  width: 30%;
+  height: auto;
+}
+
+#spacextra #content #spacextraTable #appImgSPX #phone {
   height: 50vh;
-  position: absolute;
-  margin-top: -800px;
 }
 
-#spacextra #content #watch {
+#spacextra #content #spacextraTable #appImgSPX #watch {
   height: 40vh;
+  margin-left: -170px;
+  margin-top: 100px;
   position: absolute;
-  margin-top: -660px;
-  margin-left: 50px;
 }
 
-#spacextra #content #appstore {
+#spacextra #content #spacextraTable #spxAbout {
+  color: white;
+  width: 65%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding-top: 40px;
   position: absolute;
-  margin-top: -900px;
+}
+
+#spacextra #content #spacextraTable #spxAbout ul {
+  padding-left: 50px;
 }
 
 @-webkit-keyframes scrollArrow {
