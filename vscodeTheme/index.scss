@@ -1,0 +1,28 @@
+$lightGray: #ededed;
+
+@font-face {
+    font-family: "cc";
+    src: url("file:///fonts/CascadiaCode.ttf") format('truetype');
+}
+
+*, html, body {
+    margin: 0;
+    padding: 0;
+}
+
+#all {
+    padding: 10vw;
+    width: 100%;
+    height: 100%;
+    #top {
+        h1 {
+            font-family: "cc";
+            // font-weight: 600;
+        }
+    }
+    #colours {
+        padding-top: 2vh;
+        color: black;
+        width: 80vw;
+    }
+}
