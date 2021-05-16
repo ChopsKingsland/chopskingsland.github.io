@@ -4,27 +4,119 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>MoonPhaser</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="/resources/demos/style.css">
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    </head>
-    <body>
-        <!--[if lt IE 7]>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MoonPhaser</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        
 
-        <p id="para">Date: <input type="text" id="datepicker"></p>
+    <!-- <script src="/script.js" async defer></script> -->
 
-        <script src="/script.js" async defer></script>
-    </body>
+
+    <label for="y">Year: </label><input type="number" name="y" id="year" placeholder="e.g. 2021"> <br>
+    <label for="m">Month: </label><input type="number" name="m" id="month" placeholder="e.g. 05"> <br>
+    <label for="d">Day: </label><input type="number" name="d" id="day" placeholder="e.g. 21"> <br> <br>
+    <button onclick="submit()">Go!</button>
+
+    <br><br><br>
+
+    <p id="pname"></p>
+    <p id="emoji"></p>
+
+    <script src="/script.js" async defer></script>
+
+    <script>
+
+        var moonPhases = { "full-moon": "🌕", "waxing-gibbous-moon": "🌔", "quarter-moon": "🌓", "waxing-crescent-moon": "🌒", "new-moon": "🌑", "waning-crescent-moon": "🌘", "last-quarter-moon": "🌗", "waning-gibbous-moon": "🌖", "error": "🌑" }
+
+        var phaseNames = { "full-moon": "Full Moon", "waxing-gibbous-moon": "Wazing Gibbous", "quarter-moon": "First Quarter", "waxing-crescent-moon": "Waxing Crescent", "new-moon": "New Moon", "waning-crescent-moon": "Waning Crescent", "last-quarter-moon": "Third Quarter", "waning-gibbous-moon": "Waning Gibbous", "error": "error" }
+
+        function getMoonPhase(year, month, day) {
+            var c = e = jd = b = 0;
+
+            if (month < 3) {
+                year--;
+                month += 12;
+            }
+
+            ++month;
+
+            c = 365.25 * year;
+
+            e = 30.6 * month;
+
+            jd = c + e + day - 694039.09; //jd is total days elapsed
+
+            jd /= 29.5305882; //divide by the moon cycle
+
+            // print(jd);
+
+            b = parseInt(jd); //int(jd) -> b, take integer part of jd
+
+            // print(b);
+
+            jd -= b; //subtract integer part to leave fractional part of original jd
+
+            b = Math.round(jd * 8); //scale fraction from 0-8 and round
+
+            if (b >= 8) {
+                b = 0; //0 and 8 are the same so turn 8 into 0
+            }
+
+            switch (b) {
+                case 0:
+                    return 'new-moon';
+                    break;
+                case 1:
+                    return 'waxing-crescent-moon';
+                    break;
+                case 2:
+                    return 'quarter-moon';
+                    break;
+                case 3:
+                    return 'waxing-gibbous-moon';
+                    break;
+                case 4:
+                    return 'full-moon';
+                    break;
+                case 5:
+                    return 'waning-gibbous-moon';
+                    break;
+                case 6:
+                    return 'last-quarter-moon';
+                    break;
+                case 7:
+                    return 'waning-crescent-moon';
+                    break;
+            }
+        }
+
+
+        function submit() {
+            // var phase = getMoonPhase()
+            // console.log(Number(document.getElementById("year").value));
+
+            var phase = getMoonPhase(Number(document.getElementById("year").value), Number(document.getElementById("month").value), Number(document.getElementById("day").value));
+
+            document.getElementById("pname").innerText = phaseNames[phase];
+            document.getElementById("emoji").innerText = moonPhases[phase];
+        }
+    </script>
+
+</body>
+
 </html>
