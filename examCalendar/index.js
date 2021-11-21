@@ -30,33 +30,46 @@ function getNumberOfDays(start, end) {
 loadJSON(function (response) {
     // Parse JSON string into object
     var actual_JSON = JSON.parse(response);
+    var index = 0
     // console.log(actual_JSON);
     for (let i = 0; i < actual_JSON.length; i++) {
         let d = Date.parse(actual_JSON[i]["datetime"])
         // console.log(d);
+        // console.log(Date.now());
         if (d < Date.now()) {
-            delete actual_JSON[i];
+            // delete actual_JSON.indexOf(i);
+            index = actual_JSON.indexOf(actual_JSON[i]);
+            console.log(index);
+            // delete actual_JSON[index];
+            // actual_JSON = actual_JSON.splice(actual_JSON.indexOf(actual_JSON[i]), 1);
+            // console.log(actual_JSON[i]);
         }
-        console.log(actual_JSON[i]["subject"]);
+
+        // actual_JSON = actual_JSON.splice(0, index);
+        
+        // console.log(actual_JSON[i]["subject"]);
     }
 
+    // console.log(actual_JSON);
+    index += 1;
+    
     let bigtr = document.getElementById("big");
     let bigtd = document.createElement("td");
     bigtd.colSpan = "2";
-    bigtd.style.backgroundColor = actual_JSON[0]["colour"];
+    bigtd.style.backgroundColor = actual_JSON[index]["colour"] || "#d3d3d3";
 
     let nextExam = document.createElement("div");
     nextExam.id = "nextExam";
 
     let title = document.createElement("h1");
-    title.innerText = actual_JSON[0]["subject"];
+    title.innerText = actual_JSON[index]["subject"] || "undefined";
 
     let paper = document.createElement("h2");
-    paper.innerText = actual_JSON[0]["paper"];
+    paper.innerText = actual_JSON[index]["paper"] || "undefined";
 
-    let d2 = new Date(Date.parse(actual_JSON[0]["datetime"]));
+    let d2 = new Date(Date.parse(actual_JSON[index]["datetime"]));
     let days = document.createElement("h3");
-    days.innerText = `${getNumberOfDays(new Date().toJSON().slice(0,10).replace(/-/g,'/'), actual_JSON[0]["datetime"])} days until ${d2.toLocaleDateString("en-GB")}`;
+    days.innerText = `${getNumberOfDays(new Date().toJSON().slice(0,10).replace(/-/g,'/'), actual_JSON[index]["datetime"])} days until ${d2.toLocaleDateString("en-GB")}`;
 
     
     nextExam.append(title);
@@ -69,21 +82,21 @@ loadJSON(function (response) {
 
     let smalltr1 = document.getElementById("small");
     let smalltd1 = document.createElement("td");
-    smalltd1.style.backgroundColor = actual_JSON[1]["colour"];
+    smalltd1.style.backgroundColor = actual_JSON[index + 1]["colour"];
     // bigtd.colSpan = "2";
 
     let secondExam = document.createElement("div");
     secondExam.id = "secondExam";
 
     let title2 = document.createElement("h4");
-    title2.innerText = actual_JSON[1]["subject"];
+    title2.innerText = actual_JSON[index + 1]["subject"];
 
     let paper2 = document.createElement("h5");
-    paper2.innerText = actual_JSON[1]["paper"];
+    paper2.innerText = actual_JSON[index + 1]["paper"];
 
-    let d3 = new Date(Date.parse(actual_JSON[1]["datetime"]));
+    let d3 = new Date(Date.parse(actual_JSON[index + 1]["datetime"]));
     let days2 = document.createElement("h6");
-    days2.innerText = `${getNumberOfDays(new Date().toJSON().slice(0,10).replace(/-/g,'/'), actual_JSON[1]["datetime"])} days until ${d3.toLocaleDateString("en-GB")}`;
+    days2.innerText = `${getNumberOfDays(new Date().toJSON().slice(0,10).replace(/-/g,'/'), actual_JSON[index + 1]["datetime"])} days until ${d3.toLocaleDateString("en-GB")}`;
 
     secondExam.append(title2);
     secondExam.append(paper2);
@@ -95,21 +108,21 @@ loadJSON(function (response) {
     // let thirdExam = document.getElementById("thirdExam");
     let smalltr2 = document.getElementById("small");
     let smalltd2 = document.createElement("td");
-    smalltd2.style.backgroundColor = actual_JSON[2]["colour"];
+    smalltd2.style.backgroundColor = actual_JSON[index + 2]["colour"];
     // bigtd.colSpan = "2";
 
     let thirdExam = document.createElement("div");
     thirdExam.id = "thirdExam";
 
     let title3 = document.createElement("h4");
-    title3.innerText = actual_JSON[2]["subject"];
+    title3.innerText = actual_JSON[index + 2]["subject"];
 
     let paper3 = document.createElement("h5");
-    paper3.innerText = actual_JSON[2]["paper"];
+    paper3.innerText = actual_JSON[index + 2]["paper"];
 
-    let d4 = new Date(Date.parse(actual_JSON[2]["datetime"]));
+    let d4 = new Date(Date.parse(actual_JSON[index + 2]["datetime"]));
     let days3 = document.createElement("h6");
-    days3.innerText = `${getNumberOfDays(new Date().toJSON().slice(0,10).replace(/-/g,'/'), actual_JSON[2]["datetime"])} days until ${d4.toLocaleDateString("en-GB")}`;
+    days3.innerText = `${getNumberOfDays(new Date().toJSON().slice(0,10).replace(/-/g,'/'), actual_JSON[index + 2]["datetime"])} days until ${d4.toLocaleDateString("en-GB")}`;
 
     thirdExam.append(title3);
     thirdExam.append(paper3);
@@ -117,5 +130,5 @@ loadJSON(function (response) {
     smalltd2.append(thirdExam);
     smalltr2.append(smalltd2);
 
-    console.log(actual_JSON[2]["colour"])
+    console.log(actual_JSON[index + 2]["colour"])
 });
