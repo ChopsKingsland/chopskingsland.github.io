@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Apple Music API</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        
+        <meta name="apple-music-developer-token" content="eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkRNMk02MlBMUTgifQ.eyJpc3MiOiJGWTk5WlQ2UURIIiwiaWF0IjoxNjQwMzYxMjUyLCJleHAiOjE2NDA0NDc2NTJ9.7nQ7PcqDUmKmVdi_NDUFEGmPXCHMRSrBBwN3TI0JrU-2_yLv2q7H4VX6jf_eivUc4xm8rIAEDlLOeYdvFowTJQ">
+        <meta name="apple-music-app-name" content="My Cool Web App">
+        <meta name="apple-music-app-build" content="1.0.0">
+        <script src="https://kit.fontawesome.com/37f4b52f85.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+
+
+        <ul id="playlists"></ul>
+
+        <a href="javascript:MusicKit.getInstance().play();"><i class="fas fa-play"></i></a>
+        <br>
+        <a href="javascript:MusicKit.getInstance().pause();"><i class="fas fa-pause"></i></a>
+        <br>
+        <a href="javascript:MusicKit.getInstance().stop();"><i class="fas fa-stop"></i></a>
+        
+        <script src="https://js-cdn.music.apple.com/musickit/v1/musickit.js"></script>
+        <script src="index.js" async defer></script>
+    </body>
+</html>
