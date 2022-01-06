@@ -4,36 +4,37 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Charlie Kingsland</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/css/index/index.css">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-</head>
-
-<body>
-    <!--[if lt IE 7]>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Charlie Kingsland</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/index.css">
+        <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-    <section id="hero">
-        <!-- <p>1</p> -->
-        <nav>
-            <ul>
-                <li id="logo"><a href="index.html">Charlie Kingsland</a></li>
-                <li><a href="#">My work</a></li>
-                <li><a href="#">My skills</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </section>
-
-
-    <script src="" async defer></script>
-</body>
-
+        <div id="hero">
+            <div id="cont">
+                <h1 id="name">{Charlie Kingsland}</h1>
+                <br>
+                <p id="about">
+                    I'm a <span id="age"></span> year-old app developer from 🇬🇧
+                    <br>
+                    I use <a href="?modal=python" class="link-underline" id="python">Python</a>, <a href="?modal=html" class="link-underline" id="html">HTML/CSS/JS</a>, <a href="?modal=swift" class="link-underline" id="swift">Swift</a> & <a href="?modal=c#" class="link-underline" id="cs">C#</a>
+                </p>
+            </div>
+            <p id="htmlModal">html</p>
+            <p id="pythonModal">python</p>
+        </div>
+        
+        <script src="js/age.js" async defer></script>
+        <script src="js/modals.js" async defer></script>
+        <script src="js/typing.js" async defer></script>
+    </body>
 </html>
