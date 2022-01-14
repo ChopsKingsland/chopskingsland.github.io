@@ -1,0 +1,11 @@
+html, *, body {
+  padding: 0;
+  margin: 0;
+}
+
+iframe {
+  width: 80%;
+  height: 80vh;
+  display: none;
+}
+/*# sourceMappingURL=index.css.map */
