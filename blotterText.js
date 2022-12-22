@@ -1,5 +1,5 @@
 
-document.fonts.ready.then(() => {
+document.fonts.ready.then(function () {
     container = document.getElementById("inner");
 
     var text = new Blotter.Text("Charlie Kingsland", {
@@ -8,9 +8,8 @@ document.fonts.ready.then(() => {
         size: 100,
         fill: "#ffffff",
         paddingLeft: 50,
-        paddingRight: 50,
-        filter: "blur(5px)"
-    });
+        paddingRight: 50
+});
 
     var material = new Blotter.LiquidDistortMaterial();
     material.uniforms.uSpeed.value = 0.1;
