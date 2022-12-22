@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  /* Remove the default margin around the body element */
+}
+
+#hero {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  /* Use flexbox layout */
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  /* Center the inner div horizontally */
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  /* Set a width on the outer div */
+  height: 100vh;
+  /* Set a height on the outer div */
+  background: url(photocopy.jpg) 0 0 repeat;
+}
+
+#hero #inner {
+  text-align: center;
+}
+/*# sourceMappingURL=index.css.map */
