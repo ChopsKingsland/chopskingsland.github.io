@@ -1,5 +1,5 @@
 
-document.fonts.ready.then(function () {
+document.fonts.ready.then(() => {
     container = document.getElementById("inner");
 
     var text = new Blotter.Text("Charlie Kingsland", {
@@ -23,4 +23,4 @@ document.fonts.ready.then(function () {
 
     var scope = blotter.forText(text);
     scope.appendTo(container);
-}.bind(this));
+});
