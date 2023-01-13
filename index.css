@@ -20,9 +20,30 @@ body {
   height: 100vh;
   /* Set a height on the outer div */
   background: url(photocopy.jpg) 0 0 repeat;
+  background-size: contain;
 }
 
 #hero #inner {
   text-align: center;
+}
+
+#hero .invisible-font-loader {
+  position: absolute;
+  color: rgba(20, 25, 36, 0);
+}
+
+#hero .w-embed:before, #hero .w-embed:after {
+  content: " ";
+  display: table;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  -ms-grid-row: 1;
+      grid-row-start: 1;
+  grid-column-end: 2;
+  grid-row-end: 2;
+}
+
+#hero .w-embed:after {
+  clear: both;
 }
 /*# sourceMappingURL=index.css.map */

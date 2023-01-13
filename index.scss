@@ -16,10 +16,32 @@ body {
     height: 100vh; /* Set a height on the outer div */
 
     background: url(photocopy.jpg) 0 0 repeat;
+    background-size: contain;
 
     #inner {
         text-align: center;
     }
+
+    // somehow this sorts out the font loading, idk, dont ask me. stolen from http://www.arjunmahesh.com
+    .invisible-font-loader {
+        position: absolute;
+        color: rgba(20, 25, 36, 0);
+    }
+
+    .w-embed:before, .w-embed:after {
+        content: " ";
+        display: table;
+        grid-column-start: 1;
+        grid-row-start: 1;
+        grid-column-end: 2;
+        grid-row-end:2
+    }
+    
+    .w-embed:after {
+        clear:both
+    }
+
+    
 }
 
 
