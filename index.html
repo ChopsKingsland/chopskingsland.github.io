@@ -2,33 +2,229 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- reference external css file -->
-    <link rel="stylesheet" href="index.css">
+    <title>Charlie Kingsland - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the terminal look and feel */
+        body {
+            font-family: 'Fira Code', monospace;
+            background-color: #1a1b26; /* A dark, cool background */
+            color: #a9b1d6; /* A soft, readable text color */
+        }
+        /* Blinking cursor effect for section headers */
+        .cursor {
+            display: inline-block;
+            width: 0.6em;
+            height: 1.2em;
+            background-color: #c0caf5;
+            animation: blink 1s step-end infinite;
+            vertical-align: bottom;
+            margin-left: 8px;
+            opacity: 0; /* hidden until entrance animations complete */
+            transition: opacity 160ms linear;
+        }
+        @keyframes blink {
+            from, to { background-color: transparent }
+            50% { background-color: #c0caf5; }
+        }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com"> 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+        /* Entrance animation (fade + slight slide up) */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
 
-    <script src="blotterText.js"></script>
-    <script src="blotter.min.js"></script>
-    <script src="liquidDistortMaterial.js"></script>
-    
-    <title>CK</title>
+        /* Slight floating intro for large ASCII art */
+        @keyframes floatIn {
+            from { opacity: 0; transform: translateY(-8px) scale(0.995); }
+            60% { transform: translateY(3px) scale(1.002); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Apply when JS toggles entrance */
+        .enter-play { animation: fadeUp 640ms cubic-bezier(.2,.9,.3,1) both; }
+        .ascii-art.enter-play { animation: floatIn 720ms cubic-bezier(.2,.9,.3,1) both; }
+
+        /* Small utility so elements start hidden before JS runs */
+        .entrance-prep { opacity: 0; transform: translateY(10px); }
+
+        /* Respect user preference for reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .enter-play, .ascii-art.enter-play { animation: none !important; opacity: 1 !important; transform: none !important; }
+            .cursor { opacity: 1 !important; }
+        }
+
+        /* Custom colors for different types of text */
+        .prompt-user { color: #bb9af7; } /* A nice purple for emphasis */
+        .prompt-path { color: #7aa2f7; } /* A cool blue for links/paths */
+        .command-output { color: #a9b1d6; } /* Standard output color */
+        .command-success { color: #9ece6a; } /* A green for success/info */
+        .ascii-art { color: #7dcfff; } /* A bright cyan for the ASCII art */
+        .section-header {
+            display: flex;
+            align-items: center;
+        }
+    </style>
 </head>
-<body>
+<body class="p-4 md:p-8">
 
-    <div id="hero">
-        <!-- <p id="font-hack">aaaa</p> -->
+    <!-- Main container -->
+    <div id="portfolio" class="w-full max-w-4xl mx-auto text-sm md:text-base space-y-12">
 
-        <div class="invisible-font-loader w-embed">
-            <div class="font-hack" style="font-family:'Unbounded';"> YOU FOUND AN EASTER EGG </div>
-        </div>
-        <div id="inner"></div>
+        <!-- Header with ASCII Art -->
+        <header>
+            <!-- ASCII art for medium screens and up -->
+            <pre class="ascii-art text-xs md:text-sm whitespace-pre hidden md:block">
+  ____ _                _ _         _  ___                 _                 _ 
+ / ___| |__   __ _ _ __| (_) ___   | |/ (_)_ __   __ _ ___| | __ _ _ __   __| |
+| |   | '_ \ / _` | '__| | |/ _ \  | ' /| | '_ \ / _` / __| |/ _` | '_ \ / _` |
+| |___| | | | (_| | |  | | |  __/  | . \| | | | | (_| \__ \ | (_| | | | | (_| |
+ \____|_| |_|\__,_|_|  |_|_|\___|  |_|\_\_|_| |_|\__, |___/_|\__,_|_| |_|\__,_|
+                                                 |___/                         
+            </pre>
+            <!-- Simple text title for small screens -->
+            <div class="md:hidden ascii-art text-xs overflow-x-auto">
+                <!-- <h1>Charlie Kingsland</h1> -->
+                <pre class="whitespace-pre">
+  ____ _                _ _                 
+ / ___| |__   __ _ _ __| (_) ___            
+| |   | '_ \ / _` | '__| | |/ _ \           
+| |___| | | | (_| | |  | | |  __/           
+ \____|_| |_|\__,_|_|  |_|_|\___|         _ 
+| |/ (_)_ __   __ _ ___| | __ _ _ __   __| |
+| ' /| | '_ \ / _` / __| |/ _` | '_ \ / _` |
+| . \| | | | | (_| \__ \ | (_| | | | | (_| |
+|_|\_\_|_| |_|\__, |___/_|\__,_|_| |_|\__,_|
+              |___/                         
+                </pre>
+            </div>
+            <!-- <p class="command-success mt-2">Welcome to my portfolio. Scroll down to learn more about me.</p> -->
+            <p class="command-success mt-2">Student & Hobbyist Developer</p>
+        </header>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2 class="section-header text-lg md:text-xl font-bold mb-4">
+                <span class="prompt-user">./</span><span class="prompt-path">about-me</span>
+                
+            </h2>
+            <p class="command-output">
+                Hello! I'm Charlie Kingsland, a passionate hobbyist software developer, currently studying <strong>BSc Computer Science w/ Cyber Security @ Royal Holloway</strong>. I'm currently working on improving my iOS development skills with Swift and SwiftUI. I'm always eager to learn new technologies and take on challenging projects.
+            </p>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h2 class="section-header text-lg md:text-xl font-bold mb-4">
+                <span class="prompt-user">./</span><span class="prompt-path">education</span>
+            </h2>
+            <div class="space-y-1">
+                <h3 class="command-success font-bold">BSc Computer Science w/ Cyber Security</h3>
+                <p class="command-output ml-4">Royal Holloway, University of London</p>
+                <p class="command-output ml-4 text-gray-400">2024 - Present</p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="section-header text-lg md:text-xl font-bold mb-4">
+                <span class="prompt-user">./</span><span class="prompt-path">skills</span>
+                
+            </h2>
+            <ul class="list-none space-y-3">
+                <li class="flex flex-col sm:flex-row">
+                    <span class="prompt-user sm:w-40 sm:flex-shrink-0 inline-block">Languages:</span>
+                    <span class="command-output">JavaScript, Python, HTML5, CSS3, Swift, Java</span>
+                </li>
+                <li class="flex flex-col sm:flex-row">
+                    <span class="prompt-user sm:w-40 sm:flex-shrink-0 inline-block">Frameworks/Libs:</span>
+                    <span class="command-output">Node.js, SwiftUI, Flask, Bootstrap, Tailwind CSS</span>
+                </li>
+                <li class="flex flex-col sm:flex-row">
+                    <span class="prompt-user sm:w-40 sm:flex-shrink-0 inline-block">Databases:</span>
+                    <span class="command-output">MongoDB, MySQL</span>
+                </li>
+                <li class="flex flex-col sm:flex-row">
+                    <span class="prompt-user sm:w-40 sm:flex-shrink-0 inline-block">Tools:</span>
+                    <span class="command-output">Git, Docker, Vercel, Arduino, Figma, Raspberry Pi</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2 class="section-header text-lg md:text-xl font-bold mb-4">
+                <span class="prompt-user">./</span><span class="prompt-path">projects</span>
+                
+            </h2>
+            <div class="space-y-4">
+                <div>
+                    <h3 class="command-success font-bold">Rate My Student Let</h3>
+                    <p class="command-output ml-4">A platform for students to rate and review their student housing and accommodations. <a href="https://www.ratemystudentlet.com" class="prompt-path underline">view_project</a></p>
+                </div>
+                <div>
+                    <h3 class="command-success font-bold">Train Departures (TestFlight)</h3>
+                    <p class="command-output ml-4">A mobile app for tracking UK train departures in real-time. <a href="https://testflight.apple.com/join/B6nAShQh" class="prompt-path underline">view_project</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2 class="section-header text-lg md:text-xl font-bold mb-4">
+                <span class="prompt-user">./</span><span class="prompt-path">contact</span>
+                
+            </h2>
+            <ul class="list-none space-y-3">
+                <li class="flex flex-col sm:flex-row"><span class="command-success sm:w-24 inline-block">Email:</span> <a href="mailto:ck@charliekingsland.me" class="prompt-path underline">ck@charliekingsland.me</a></li>
+                <li class="flex flex-col sm:flex-row"><span class="command-success sm:w-24 inline-block">LinkedIn:</span> <a href="https://linkedin.com/in/charliekingsland" target="_blank" class="prompt-path underline">linkedin.com/in/charliekingsland</a></li>
+                <li class="flex flex-col sm:flex-row"><span class="command-success sm:w-24 inline-block">GitHub:</span> <a href="https://github.com/ChopsKingsland" target="_blank" class="prompt-path underline">github.com/ChopsKingsland</a></li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center pt-8">
+            <p class="text-xs command-output">&copy; 2025 Charlie Kingsland. All rights reserved.</p>
+        </footer>
+
     </div>
 
-    <!-- import external js script -->
-    
+    <!-- Entrance animation script: adds staggered animations to header, sections and footer -->
+    <script>
+    (function(){
+        function ready(fn){
+            if(document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn);
+        }
+
+        ready(function(){
+            var container = document.getElementById('portfolio');
+            if(!container) return;
+
+            // Collect visible children to animate (header, sections, footer)
+            var items = Array.prototype.slice.call(container.children);
+
+            // Mark items so they start hidden if JS is enabled
+            items.forEach(function(el){ el.classList.add('entrance-prep'); });
+
+            // Stagger and play animation classes
+            items.forEach(function(el, i){
+                var delay = i * 120 + 120; // ms
+                setTimeout(function(){
+                    el.classList.add('enter-play');
+                }, delay);
+            });
+
+            // Reveal the blinking cursor after animations finish
+            var cursor = document.querySelector('.cursor');
+            var totalDelay = items.length * 120 + 300;
+            setTimeout(function(){ if(cursor) cursor.style.opacity = '1'; }, totalDelay);
+        });
+    })();
+    </script>
+
 </body>
 </html>
